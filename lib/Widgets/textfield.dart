@@ -3,14 +3,14 @@ import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart'
 
 class SmartLearnTextField extends StatefulWidget {
   final String hintText;
-  final Icon prefixIcon;
+  final Icon? prefixIcon;
   final TextEditingController controller;
   final TextInputType textInputType;
 
   const SmartLearnTextField(
       {super.key,
       required this.hintText,
-      required this.prefixIcon,
+      this.prefixIcon,
       required this.textInputType,
       required this.controller});
 

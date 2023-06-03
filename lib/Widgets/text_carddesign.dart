@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
-import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
 
 class TextCardDesign extends StatelessWidget {
   final String title;

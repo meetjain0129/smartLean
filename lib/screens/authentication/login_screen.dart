@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_supabase/Widgets/primarybutton.dart';
 import 'package:flutter_supabase/Widgets/textfield.dart';
+import 'package:flutter_supabase/appConstants/NavigationUtils/navigation_utils.dart';
 import 'package:flutter_supabase/appConstants/assetsPath.dart/assets_path.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
-import 'package:flutter_supabase/screens/Bottombar/bottombar.dart';
-import 'package:flutter_supabase/screens/authentication/forget_password.dart';
-import 'package:flutter_supabase/screens/authentication/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -82,9 +80,10 @@ class _LoginScreenState extends State<LoginScreen> {
               customDesign.sizedBox20,
               Align(
                 alignment: Alignment.centerRight,
-                child: Bounce(
-                  onPressed: navigateToForgotpassword,
-                  duration: const Duration(milliseconds: 110),
+                child: TextButton(
+                  onPressed: () {
+                    NavigationUtils().openForgetPasswordScreen();
+                  },
                   child: Text(
                     StringConstant.forgotPassword,
                     style: customDesign.forgotPassword,
@@ -92,11 +91,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: height * 0.05,
+                height: height * 0.02,
               ),
               Button(
                   buttonTitle: StringConstant.login,
-                  onClick: navigateToDashboard,
+                  onClick: () {
+                    NavigationUtils().openDashBoardScreen();
+                  },
                   color: ColorConstants.primaryDark,
                   textStyle: customDesign.getStarted),
               customDesign.sizedBox20,
@@ -150,7 +151,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Bounce(
                     duration: const Duration(milliseconds: 110),
-                    onPressed: navigateToSignupScreen,
+                    onPressed: () {
+                      NavigationUtils().openSignUpScreen();
+                    },
                     child: Text(
                       StringConstant.here,
                       style: customDesign.here,
@@ -164,20 +167,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  navigateToForgotpassword() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const ForgetPassword()));
-  }
-
-  navigateToSignupScreen() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
-  }
-
-  navigateToDashboard() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const BottomBar()));
   }
 }

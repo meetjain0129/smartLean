@@ -6,6 +6,7 @@ import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart'
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
+import 'package:flutter_supabase/screens/Dashboard/QueryScreen/createpost.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -128,7 +129,10 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const CreatePost()));
+          },
           backgroundColor: ColorConstants.primaryDark,
           child: const Icon(Icons.add)),
     );

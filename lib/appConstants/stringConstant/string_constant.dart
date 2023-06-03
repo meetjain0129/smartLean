@@ -44,4 +44,14 @@ class StringConstant {
 
   //Post Query
   static const String postQuery = "Post Query";
+
+  //CreatePost
+  static const String createPost = "Create a Post ";
+  static const String createPostDescription =
+      'Enter all the details to create a learning request.';
+  static const String headlineText = 'Headline of your query';
+  static const String enterTags = 'Enter tags';
+  static const String experienceLevel = 'Experience Level';
+  static const String yourBudget = 'Your Budget';
+  static const String descriptionTxt = 'Description';
 }

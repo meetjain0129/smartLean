@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_supabase/Data/onboarding_data.dart';
 import 'package:flutter_supabase/Widgets/primarybutton.dart';
+import 'package:flutter_supabase/appConstants/NavigationUtils/navigation_utils.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
-import 'package:flutter_supabase/screens/authentication/login_screen.dart';
+import 'package:flutter_supabase/screens/OnBoarding/Getx/getx_controller.dart';
+import 'package:get/get.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -19,6 +21,7 @@ class _OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
   CustomDesign customDesign = CustomDesign();
   OnBoardingData onBoardingData = OnBoardingData();
   PageController controller = PageController();
+  GetxControllerClass getxController = Get.put(GetxControllerClass());
 
   //Variables Declaration
   bool isButtonsVisible = true;
@@ -105,7 +108,9 @@ class _OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
               visible: isButtonsVisible,
               replacement: Button(
                   buttonTitle: 'Get Started',
-                  onClick: navigate,
+                  onClick: () {
+                    NavigationUtils().openLoginScreen();
+                  },
                   textStyle: customDesign.getStarted,
                   color: ColorConstants.primaryDark),
               child: Row(
@@ -113,24 +118,7 @@ class _OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
                 children: [
                   Bounce(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          PageRouteBuilder(
-                              transitionsBuilder: (context, animation,
-                                  secondaryAnimation, child) {
-                                const begin = Offset(0.0, 1.0);
-                                const end = Offset.zero;
-                                const curve = Curves.ease;
-                                var tween = Tween(begin: begin, end: end)
-                                    .chain(CurveTween(curve: curve));
-                                return SlideTransition(
-                                    position: animation.drive(tween),
-                                    child: child);
-                              },
-                              pageBuilder:
-                                  (context, animation, secondaryAnimation) =>
-                                      const LoginScreen()),
-                          (route) => false);
+                      NavigationUtils().openLoginScreen();
                     },
                     duration: const Duration(milliseconds: 110),
                     child: Text(
@@ -174,10 +162,5 @@ class _OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  navigate() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }

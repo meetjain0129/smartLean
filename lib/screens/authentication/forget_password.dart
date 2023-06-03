@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_supabase/Widgets/primarybutton.dart';
 import 'package:flutter_supabase/Widgets/textfield.dart';
+import 'package:flutter_supabase/appConstants/NavigationUtils/navigation_utils.dart';
 import 'package:flutter_supabase/appConstants/assetsPath.dart/assets_path.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
@@ -41,7 +42,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   splashRadius: SizeConstant.splashRadius,
                   constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigationUtils().openPreviousScreen();
+                  },
                   icon: const Icon(
                     Icons.arrow_back_ios,
                     color: ColorConstants.darkBlue,

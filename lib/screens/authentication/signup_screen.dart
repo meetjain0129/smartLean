@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_supabase/Widgets/primarybutton.dart';
 import 'package:flutter_supabase/Widgets/textfield.dart';
+import 'package:flutter_supabase/appConstants/NavigationUtils/navigation_utils.dart';
 import 'package:flutter_supabase/appConstants/assetsPath.dart/assets_path.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
+import 'package:flutter_supabase/screens/Bottombar/bottombar.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,6 +19,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   CustomDesign customDesign = CustomDesign();
+  bool isMaleSelected = true, isFemaleSelected = false;
 
   //Initializing the controller
   TextEditingController fullNameController = TextEditingController();
@@ -45,7 +48,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   splashRadius: SizeConstant.splashRadius,
                   constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigationUtils().openPreviousScreen();
+                  },
                   icon: const Icon(
                     Icons.arrow_back_ios,
                     color: ColorConstants.darkBlue,
@@ -103,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               SizedBox(
-                height: height * 0.05,
+                height: height * 0.03,
               ),
               Align(
                   alignment: Alignment.center,
@@ -112,7 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: customDesign.orLoginVia,
                   )),
               SizedBox(
-                height: height * 0.04,
+                height: height * 0.03,
               ),
               SmartLearnTextField(
                   hintText: 'Full Name',
@@ -150,11 +155,92 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textInputType: TextInputType.phone,
                   controller: fullNameController),
               SizedBox(
-                height: height * 0.07,
+                height: height * 0.03,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Bounce(
+                    duration: const Duration(milliseconds: 110),
+                    onPressed: changeGender,
+                    child: Container(
+                      width: width * 0.35,
+                      height: 50,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: SizeConstant.padding10),
+                      decoration: BoxDecoration(
+                          color: isMaleSelected
+                              ? ColorConstants.primaryDark
+                              : ColorConstants.lightWhite,
+                          border: Border.all(
+                              color: !isMaleSelected
+                                  ? ColorConstants.primaryDark
+                                  : ColorConstants.primaryDark),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.male,
+                            color: isMaleSelected
+                                ? ColorConstants.lightBackground
+                                : ColorConstants.primaryDark,
+                          ),
+                          SizedBox(
+                            width: width * 0.05,
+                          ),
+                          Text(
+                            "Male",
+                            style: CustomDesign().getStarted,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Bounce(
+                    duration: const Duration(milliseconds: 110),
+                    onPressed: changeGender,
+                    child: Container(
+                      width: width * 0.35,
+                      height: 50,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: SizeConstant.padding10),
+                      decoration: BoxDecoration(
+                          color: isFemaleSelected == true
+                              ? ColorConstants.primaryDark
+                              : ColorConstants.lightWhite,
+                          border: Border.all(
+                              color: !isFemaleSelected
+                                  ? ColorConstants.primaryDark
+                                  : ColorConstants.primaryDark),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.female),
+                          SizedBox(
+                            width: width * 0.05,
+                          ),
+                          Text(
+                            'Female',
+                            style: isFemaleSelected
+                                ? CustomDesign().getStarted
+                                : CustomDesign().textNormalPrimaryDark,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.03,
               ),
               Button(
                   buttonTitle: StringConstant.signup,
-                  onClick: () {},
+                  onClick: () {
+                    NavigationUtils().openDashBoardScreen();
+                  },
                   color: ColorConstants.primaryDark,
                   textStyle: customDesign.getStarted)
             ],
@@ -162,5 +248,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  changeGender() {
+    if (isMaleSelected) {
+      !isFemaleSelected;
+    } else {
+      isFemaleSelected;
+    }
+
+    setState(() {});
   }
 }

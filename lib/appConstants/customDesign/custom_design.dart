@@ -154,4 +154,9 @@ class CustomDesign {
       color: ColorConstants.lightBackground,
       fontSize: 18.0,
       fontWeight: FontWeight.w700);
+
+  TextStyle primaryDarkText = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: ColorConstants.primaryDark);
 }
