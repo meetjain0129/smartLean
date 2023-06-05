@@ -7,6 +7,9 @@ import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
 import 'package:flutter_supabase/screens/Bottombar/bottombar.dart';
+import 'package:flutter_supabase/screens/Dashboard/Proposal/list_proposal.dart';
+import 'package:flutter_supabase/screens/Dashboard/QueryScreen/accept_proposal.dart';
+import 'package:get/get.dart';
 
 class ViewMore extends StatefulWidget {
   final String queryTitle, experienceLevel, budget, description;
@@ -124,10 +127,7 @@ class _ViewMoreState extends State<ViewMore> {
               Button(
                   buttonTitle: 'Submit',
                   onClick: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BottomBar()));
+                    Get.to(() => const ProposalAccepted());
                   },
                   color: ColorConstants.primaryDark,
                   textStyle: CustomDesign().getStarted),

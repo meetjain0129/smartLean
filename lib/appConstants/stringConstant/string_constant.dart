@@ -54,4 +54,12 @@ class StringConstant {
   static const String experienceLevel = 'Experience Level';
   static const String yourBudget = 'Your Budget';
   static const String descriptionTxt = 'Description';
+
+  // Loved your choice
+  static const String lovedyourchoice = 'Loved your choice!';
+  static const String lovedyourchoicedesp =
+      'Please start the payment journey to confirm the instructor and explore.';
+
+  // List of Proposal
+  static const String listofproposal = 'List of Proposal';
 }

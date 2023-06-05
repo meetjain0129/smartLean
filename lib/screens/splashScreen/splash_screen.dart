@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_supabase/appConstants/NavigationUtils/navigation_utils.dart';
 import 'package:flutter_supabase/appConstants/assetsPath.dart/assets_path.dart';
 import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart';
-import 'package:flutter_supabase/screens/OnBoarding/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

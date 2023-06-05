@@ -8,7 +8,6 @@ import 'package:flutter_supabase/appConstants/colorConstant/color_constant.dart'
 import 'package:flutter_supabase/appConstants/customDesign/custom_design.dart';
 import 'package:flutter_supabase/appConstants/sizeConstant/size_constant.dart';
 import 'package:flutter_supabase/appConstants/stringConstant/string_constant.dart';
-import 'package:flutter_supabase/screens/Bottombar/bottombar.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

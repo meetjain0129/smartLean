@@ -15,4 +15,7 @@ class AssetsPath {
 
   /*---------------------Dashboard-------------------*/
   static const String askQuery = 'assets/Dashboard/Dashboard.png';
+
+  /*---------------------Loved your choice-------------------*/
+  static const String lovedyourchoice = 'assets/Dashboard/lovedyourchoice.png';
 }
